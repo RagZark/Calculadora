@@ -24,11 +24,13 @@ const Calculator = () => {
 
     const inputNum = (e) => {
         let input = e.target.value
-        setNum((Number(num) === 0 || input === ".") && (input >= 0 && input <= 9) ? input : num + input)
+        setNum(num === 0 && input !== "." ? input : num + input);
     }
 
     const clearInput = () => {
-        setNum(0)
+        setNum(0);
+        setPrevNum(0);
+        setOperator(null);
     }
 
     const changeSign = () => {
@@ -41,34 +43,62 @@ const Calculator = () => {
 
     const operatorHandler = (e) => {
         const operation = e.target.value
-        switch (operation) {
-            case "/":
-                return setOperator(operation);
-            case "X":
-                return setOperator(operation);
-            case "-":
-                return setOperator(operation);
-            case "+":
-                return setOperator(operation);
-            default:
-                setOperator(null);
-            break
-        }
+        setPrevNum(num)
+        setNum(0)
+        setOperator(operation)
     }
+
+    const makeOperation = (e) =>{
+        let result;
+        switch (operator) {
+            case "/":
+                result = Number(prevNum) / Number(num);
+                break;
+            case "X":
+                result = Number(prevNum) * Number(num);
+                break;
+            case "-":
+                result = Number(prevNum) - Number(num);
+                break;
+            case "+":
+                result = Number(prevNum) + Number(num);
+                break;
+            default:
+                return;
+        }
+        setNum(result);
+        setPrevNum(0);
+        setOperator(null);
+    }
+
+
 
 
     const handleClick = (e) => {
-        switch(e.target.value){
-            case "AC":
-                return clearInput();
-            case "+/-":
-                return changeSign();
-            case "%":
-                return percentage();
-            default:
-                return inputNum(e);
+        const value = e.target.value;
+    
+        if (value >= 0 || value === ".") {
+            inputNum(e);
+        } else {
+            switch (value) {
+                case "AC":
+                    clearInput();
+                    break;
+                case "+/-":
+                    changeSign();
+                    break;
+                case "%":
+                    percentage();
+                    break;
+                case "=":
+                    makeOperation();
+                    break;
+                default:
+                    operatorHandler(e);
+                    break;
+            }
         }
-    }
+    };
 
     return (
         <div>
