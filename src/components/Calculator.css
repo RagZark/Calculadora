@@ -1,0 +1,17 @@
+.wrapper{
+    background-color: #000;
+    border-radius: 8px;
+}
+
+button{
+    height: 3em;
+    width: 3em;
+    font-size: 1.5em;
+    border-radius: 4px;
+    border: none;
+    background-color: #cccccc;
+}
+
+button:hover{
+    cursor: pointer;
+}
