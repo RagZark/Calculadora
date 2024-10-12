@@ -1,6 +1,11 @@
 .wrapper{
+    padding-top: 8rem;
+    margin-top: 3rem;
     background-color: #000;
     border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 button{
@@ -8,10 +13,29 @@ button{
     width: 3em;
     font-size: 1.5em;
     border-radius: 4px;
+    margin: 0.3em;
     border: none;
-    background-color: #cccccc;
 }
 
 button:hover{
     cursor: pointer;
+}
+
+.gray{
+    background-color: #505050;
+    color: white;
+}
+
+.white{
+    background-color: #FFFFFF;
+    color: black;
+}
+
+.orange{
+    background-color: #FF9500;
+    color: white;
+}
+
+.hidden{
+    visibility: hidden;
 }
