@@ -48,20 +48,33 @@ const Calculator = () => {
         setOperator(operation)
     }
 
+    const sum = (value1, value2) => Number(value1) + Number(value2);
+    
+
+    const subtration = (value1, value2) => Number(value1) - Number(value2);
+
+    const multiplication = (value1, value2) => Number(value1) * Number(value2);
+
+
+    const division = (value1, value2) => Number(value1) / Number(value2);
+
+
+
+
     const makeOperation = (e) =>{
         let result;
         switch (operator) {
             case "/":
-                result = Number(prevNum) / Number(num);
+                result = division(prevNum, num);
                 break;
             case "X":
-                result = Number(prevNum) * Number(num);
+                result = multiplication(prevNum, num);
                 break;
             case "-":
-                result = Number(prevNum) - Number(num);
+                result = subtration(prevNum, num);
                 break;
             case "+":
-                result = Number(prevNum) + Number(num);
+                result = sum(prevNum, num);
                 break;
             default:
                 return;
